@@ -59,7 +59,7 @@ var recommend = document.querySelector('.recommend');
 
 
 // Event Listeners
-cookButton.addEventListener('click', showMeal)
+cookButton.addEventListener('click', getData)
 clearButton.addEventListener('click', clear)
 
 //Event Handlers
@@ -78,20 +78,19 @@ function getData() {
     } else if (document.getElementById("meal").checked === true) {
         choice = "Update for a full meal coming soon";
       } else choice = "Cloudy with a chance of Meatballs";
-  makeRecommend(choice);
+  line2.innerText = `${choice}!`;
+  showMeal();
 };
 
-function makeRecommend(choice) {
-  line2.innerText = `${choice}!`;
 
-}
+
+
 
 function showMeal() {             //Let's Cook button handler
   cookPotIcon.classList.add('hidden');
   clearButton.classList.remove('hidden');
   recommend.classList.remove('hidden');
   cookButton.classList.add('hidden');
-  getData();
 }
 
 function clear() {
@@ -112,5 +111,7 @@ function userRecipe() {
   recipeBar.classList.remove('hidden');
 }
 function addRecipe() {  //adds to type of dish array and shows result
-  
+  recipeButton.classList.remove('hidden');
+  recipeBar.classList.add('hidden');
+  showMeal();
 }
