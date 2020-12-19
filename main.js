@@ -54,8 +54,8 @@ var cookPotIcon = document.querySelector('.pot');
 var cookButton = document.querySelector('.cook-button');
 
 var clearButton = document.querySelector('.clear-button');
+var line2 = document.querySelector('.line2');
 var recommend = document.querySelector('.recommend');
-var recommendation = recommend.innerHTML;
 
 
 // Event Listeners
@@ -67,14 +67,36 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function showMeal() {
+function getData() {
+  var choice;
+  if (document.getElementById("side").checked === true) {
+    choice = sideDishes[getRandomIndex(sideDishes)];
+  } else if (document.getElementById("main").checked === true) {
+      choice = mainDishes[getRandomIndex(mainDishes)];
+    } else if (document.getElementById("dessert").checked === true) {
+      choice = desserts[getRandomIndex(desserts)];
+    } else if (document.getElementById("meal").checked === true) {
+        choice = "Update for a full meal coming soon";
+      } else choice = "Cloudy with a chance of Meatballs";
+  makeRecommend(choice);
+};
+
+function makeRecommend(choice) {
+  line2.innerText = `${choice}!`;
+
+}
+
+function showMeal() {             //Let's Cook button handler
   cookPotIcon.classList.add('hidden');
   clearButton.classList.remove('hidden');
   recommend.classList.remove('hidden');
+  cookButton.classList.add('hidden');
+  getData();
 }
 
 function clear() {
   cookPotIcon.classList.remove('hidden');
   clearButton.classList.add('hidden');
-  recommend.classList.add('hidden')
+  recommend.classList.add('hidden');
+  cookButton.classList.remove('hidden');
 }
