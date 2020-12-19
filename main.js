@@ -78,19 +78,19 @@ function getData() {
     } else if (document.getElementById("meal").checked === true) {
         choice = "Update for a full meal coming soon";
       } else choice = "Cloudy with a chance of Meatballs";
-  line2.innerText = `${choice}!`;
-  showMeal();
+  showMeal(choice);
 };
 
 
 
 
 
-function showMeal() {             //Let's Cook button handler
+function showMeal(choice) {             //Let's Cook button handler
   cookPotIcon.classList.add('hidden');
   clearButton.classList.remove('hidden');
   recommend.classList.remove('hidden');
   cookButton.classList.add('hidden');
+  line2.innerText = `${choice}!`;
 }
 
 function clear() {
@@ -106,12 +106,31 @@ var makeNew = document.querySelector('.add-new-button');
 var type = document.querySelector('.user-type');
 var dish = document.querySelector('.user-dish');
 makeNew.addEventListener('click', addRecipe)
+
 function userRecipe() {
   recipeButton.classList.add('hidden');
   recipeBar.classList.remove('hidden');
 }
-function addRecipe() {  //adds to type of dish array and shows result
+
+function addRecipe() {  //type of dish shows result, calls saving to array
+  var userType = 'side';
+  var userDish = 'Lasagna';
   recipeButton.classList.remove('hidden');
   recipeBar.classList.add('hidden');
-  showMeal();
+  if (type != undefined && typeof(type)==='string') {
+    console.log('which');
+
+  }
+
+  saveMeal(userType, userDish);
+
+
+
+  showMeal(userDish);
+};
+
+function saveMeal(type, choice) {   // save the dish into it's proper array
+  if (type.toLowerCase === 'side' ) {
+    console.log('ok')
+  }
 }
