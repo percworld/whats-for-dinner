@@ -5,7 +5,8 @@ var cookButton = document.querySelector('.cook-button');
 var clearButton = document.querySelector('.clear-button');
 var displayed = document.querySelector('.line2');
 var recommend = document.querySelector('.recommend');
-
+var favoriteButton = document.querySelector('.favorite-button');
+var favorites = [];
 
 // Event Listeners
 cookButton.addEventListener('click', getData);
@@ -17,13 +18,20 @@ function getRandomIndex(array) {
 };
 
 function getData() {
+  var index;
   var choice;
   if (document.getElementById("side").checked === true) {
-    choice = sideDishes[getRandomIndex(sideDishes)];
+    index = getRandomIndex(sideDishes);
+    choice = sideDishes[index];
+    sideDishes.splice(index, 1);
   } else if (document.getElementById("main").checked === true) {
-      choice = mainDishes[getRandomIndex(mainDishes)];
+      index = getRandomIndex(mainDishes);
+      choice = mainDishes[index];
+      mainDishes.splice(index, 1);
     } else if (document.getElementById("dessert").checked === true) {
-      choice = desserts[getRandomIndex(desserts)];
+      index = getRandomIndex(desserts);
+      choice = desserts[index];
+      desserts.splice(index, 1);
     } else if (document.getElementById("meal").checked === true) {
         choice = "Update for a full meal coming soon";
       } else choice = "Cloudy with a chance of Meatballs";
@@ -36,6 +44,7 @@ function showMeal(choice) {             //Let's Cook button handler
   recommend.classList.remove('hidden');
   cookButton.classList.add('hidden');
   displayed.innerText = `${choice}!`;
+  favoriteButton.classList.remove('hidden');
 };
 
 function clear() {
@@ -43,7 +52,9 @@ function clear() {
   clearButton.classList.add('hidden');
   recommend.classList.add('hidden');
   cookButton.classList.remove('hidden');
+  favoriteButton.classList.add('hidden');
 };
+
 var recipeButton = document.querySelector('.recipe-button');
 recipeButton.addEventListener('click', userRecipe);
 var recipeBar = document.querySelector('.add-recipe-bar');

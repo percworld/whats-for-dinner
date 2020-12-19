@@ -71,9 +71,7 @@ body{
 .clear-button-block {
   height: 8%;
   width: inherit;
-  padding: 2vw;
-  margin-top: 2vh;
-  margin-left: 25vw;
+  margin-left: 32vw;
 }
 
 .clear-button {
@@ -165,6 +163,12 @@ body{
   width: 12vw;
   border-radius: 6px;
 
+}
+
+.favorite-button {
+  border-radius: 6px;
+  border-color: #ee5253;
+  margin-left: 9px;
 }
 
 /* font-family: 'Roboto', sans-serif;
