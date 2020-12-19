@@ -100,3 +100,17 @@ function clear() {
   recommend.classList.add('hidden');
   cookButton.classList.remove('hidden');
 }
+var recipeButton = document.querySelector('.recipe-button');
+recipeButton.addEventListener('click', userRecipe);
+var recipeBar = document.querySelector('.add-recipe-bar');
+var makeNew = document.querySelector('.add-new-button');
+var type = document.querySelector('.user-type');
+var dish = document.querySelector('.user-dish');
+makeNew.addEventListener('click', addRecipe)
+function userRecipe() {
+  recipeButton.classList.add('hidden');
+  recipeBar.classList.remove('hidden');
+}
+function addRecipe() {  //adds to type of dish array and shows result
+  
+}

@@ -6,34 +6,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   </head>
   <body>
-    <nav class="header" > What's for Dinner?</h1>
-      <button class=recipeButton >ADD A RECIPE</button>
-    </nav>
-    <div class="flex-container">
-      <section class="box-one">
-        <h1 class="prompt" >What are you looking for?<span>*</span
-        </h1>
-        <ul class="radio">
-          <input type="radio" name="rad" id="side"> Side</input><br>
-          <input type="radio" name="rad" id="main"> Main Dish</input><br>
-          <input type="radio" name="rad" id="dessert"> Dessert</input><br>
-          <input type="radio" name="rad" id="meal"> Entire Meal</input><br>
-          <button class="cook-button">Let's Cook!</button>
-        </ul>
-      </section>
-      <section class="box-two">
-        <section class="box-two-content">
-          <img class="pot" src="./assets/cookpot.svg">
-          <div class="recommend hidden">
-            <p class=line1>You should make:</p>
-            <p class=line2>Lasagna</p>
+    <div>
+      <nav class="header" > What's for Dinner?</h1>
+        <button class=recipe-button >ADD A RECIPE</button>
+      </nav>
+    </div>
+    <div class="mainView">
+      <div class="flex-container">
+        <section class="box-one">
+          <h1 class="prompt" >What are you looking for?<span>*</span
+          </h1>
+          <ul class="radio">
+            <input type="radio" name="rad" id="side"> Side</input><br>
+            <input type="radio" name="rad" id="main"> Main Dish</input><br>
+            <input type="radio" name="rad" id="dessert"> Dessert</input><br>
+            <input type="radio" name="rad" id="meal"> Entire Meal</input><br>
+            <button class="cook-button">LET'S COOK!</button>
+          </ul>
+        </section>
+        <section class="box-two">
+          <section class="box-two-content">
+            <img class="pot" src="./assets/cookpot.svg">
+            <div class="recommend hidden">
+              <p class=line1>You should make:</p>
+              <p class=line2>Lasagna</p>
+            </div>
+          </section>
+          <div class="clear-button-block">
+            <button class="view clear-button hidden">CLEAR</button>
           </div>
         </section>
-        <div class="clear-button-block">
-          <button class="view clear-button hidden">CLEAR</button>
-        </div>
-      </section>
-    </div>
+      </div>
+    <section class="add-recipe-bar hidden">
+      <label for="recipe-type">Recipe Type:</label>
+      <input class="user-type" type="text">
+      <label for="recipe-name">Recipe Name:</label>
+      <input class="user-dish" type="text">
+      <button class="add-new-button">ADD NEW</button>
+    </section>
     <footer></footer>
   </body>
   <script type="text/javascript" src="main.js"></script>
