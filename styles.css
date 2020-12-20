@@ -69,7 +69,7 @@ body{
 }
 
 .clear-button-block {
-  margin-top: 8%;
+  margin-top: 5%;
   margin-left: 75%;
 }
 
@@ -82,6 +82,7 @@ body{
   font-size: 16px;
   color: white;
   text-align: center;
+  border-bottom:
 }
 
 .box-two-content{
@@ -141,8 +142,12 @@ body{
 }
 
 .line2 {
+  margin-top: 1vh;
   font-size: 38px;
-  margin-top: 0vh;
+}
+
+.line2-meal {
+  font-size: 23px;
 }
 
 .hidden {
@@ -163,11 +168,46 @@ body{
 
 }
 
-.favorite-button {
+.favorites-image{
+  width: 50vw;
+}
+
+.favorites-view {
+  height: 15vh;
+  max-width: 1200px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.favorite-recipes {
+  font-size: 23px;
+  color: white;
+  padding: 3vw;
+}
+
+.favorite-button, .favorites-view-button  {
   border-radius: 6px;
   border-color: #ee5253;
   margin-left: 126px;
 }
+
+.back-button {
+  border-radius: 6px;
+  border-color: #95a5a6;;
+  background-color: rgba(225, 225, 225, .9);
+  height: 5vh;
+  margin-top: 26vh
+}
+
+.favorites-view-button {
+  background-color: rgba(225, 225, 225, .9);
+  border-color: #0fb9b1;
+  opacity: 70%;
+  margin-left: 7vw;
+  margin-bottom: 12%;
+}
+
 
 /* font-family: 'Roboto', sans-serif;
 
