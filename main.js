@@ -1,66 +1,26 @@
-// get familiar with css syling calls
-var sideDishes = [
-"Miso Glazed Carrots",
-"Coleslaw",
-"Garden Salad",
-"Crispy Potatoes",
-"Sweet Potato Tots",
-"Coconut Rice",
-"Caeser Salad",
-"Shrimp Summer Rolls",
-"Garlic Butter Mushrooms",
-"Hush Puppies"
-];
-
-var mainDishes = [
-  "Spaghetti and Meatballs",
-  "Pineapple Chicken",
-  "Shakshuka",
-  "Thai Yellow Curry",
-  "Bibimbap",
-  "Chicken Parmesean",
-  "Butternut Squash Soup",
-  "BBQ Chicken Burgers",
-  "Ramen",
-  "Empanadas",
-  "Chicken Fried Rice",
-  "Sheet Pan Fajitas",
-  "Margarita Pizza"
-];
-
-var desserts = [
-  "Apple Pie",
-  "Lemon Meringue Pie",
-  "Black Forest Cake",
-  "Banana Bread",
-  "Peach Cobbler",
-  "Cheesecake",
-  "Funfetti Cake",
-  "Baklava",
-  "Flan",
-  "Macarons",
-  "Macaroons",
-  "Chocolate Cupcakes",
-  "Pavlova",
-  "Pumpkin Pie",
-  "Key Lime Pie",
-  "Tart Tatin",
-  "Croissants",
-  "Eclairs"
-]
-
+var userType;
+var choice = "";
+var favorites = [];
 
 var cookPotIcon = document.querySelector('.pot');
 var cookButton = document.querySelector('.cook-button');
-
 var clearButton = document.querySelector('.clear-button');
-var line2 = document.querySelector('.line2');
+var displayed = document.querySelector('.line2');
 var recommend = document.querySelector('.recommend');
+var favoriteButton = document.querySelector('.favorite-button');
+var recipeButton = document.querySelector('.recipe-button');
+var recipeBar = document.querySelector('.add-recipe-bar');
+var makeNew = document.querySelector('.add-new-button');
+var type = document.querySelector('.user-type');
+var dish = document.querySelector('.user-dish');
 
 
 // Event Listeners
-cookButton.addEventListener('click', showMeal)
-clearButton.addEventListener('click', clear)
+cookButton.addEventListener('click', getData);
+clearButton.addEventListener('click', clear);
+favoriteButton.addEventListener('click', addFavorite);
+recipeButton.addEventListener('click', userRecipe);
+makeNew.addEventListener('click', addRecipe);
 
 //Event Handlers
 function getRandomIndex(array) {
@@ -68,35 +28,69 @@ function getRandomIndex(array) {
 };
 
 function getData() {
-  var choice;
+  var index;
   if (document.getElementById("side").checked === true) {
-    choice = sideDishes[getRandomIndex(sideDishes)];
+    index = getRandomIndex(sideDishes);
+    choice = sideDishes[index];
+    sideDishes.splice(index, 1);
   } else if (document.getElementById("main").checked === true) {
-      choice = mainDishes[getRandomIndex(mainDishes)];
+      index = getRandomIndex(mainDishes);
+      choice = mainDishes[index];
+      mainDishes.splice(index, 1);
     } else if (document.getElementById("dessert").checked === true) {
-      choice = desserts[getRandomIndex(desserts)];
+      index = getRandomIndex(desserts);
+      choice = desserts[index];
+      desserts.splice(index, 1);
     } else if (document.getElementById("meal").checked === true) {
         choice = "Update for a full meal coming soon";
       } else choice = "Cloudy with a chance of Meatballs";
-  makeRecommend(choice);
+  showMeal(choice);
 };
 
-function makeRecommend(choice) {
-  line2.innerText = `${choice}!`;
-
-}
-
-function showMeal() {             //Let's Cook button handler
+function showMeal(choice) {             //Let's Cook button handler
   cookPotIcon.classList.add('hidden');
   clearButton.classList.remove('hidden');
   recommend.classList.remove('hidden');
   cookButton.classList.add('hidden');
-  getData();
-}
+  displayed.innerText = `${choice}!`;
+  favoriteButton.classList.remove('hidden');
+};
 
 function clear() {
   cookPotIcon.classList.remove('hidden');
   clearButton.classList.add('hidden');
   recommend.classList.add('hidden');
   cookButton.classList.remove('hidden');
-}
+  favoriteButton.classList.add('hidden');
+};
+
+function userRecipe() {
+  recipeButton.classList.add('hidden');
+  recipeBar.classList.remove('hidden');
+};
+
+function addRecipe() {
+  recipeButton.classList.remove('hidden');
+  recipeBar.classList.add('hidden');
+
+  if ((typeof 'type') === 'string' && (typeof 'dish') === 'string') {  //Enough validation?
+    userType = type.innerText;
+    choice = dish.innerText;
+    saveMeal(userType, choice);
+  };
+  showMeal(choice);
+};
+
+function saveMeal(type, choice) {   // save the dish into it's proper array
+  if (type.toLowerCase === 'side' ) {
+    sideDishes.push(choice);
+  } else if (type.toLowerCase === 'main') {
+    mainDishes.push(choice);
+  } else if (type.toLowerCase === 'dessert') {
+    desserts.push(choice);
+  };
+};
+
+function addFavorite(choice) {
+  favorites.push(choice);
+};
