@@ -1,4 +1,6 @@
 var userType;
+var choice = "";
+var favorites = [];
 
 var cookPotIcon = document.querySelector('.pot');
 var cookButton = document.querySelector('.cook-button');
@@ -6,11 +8,19 @@ var clearButton = document.querySelector('.clear-button');
 var displayed = document.querySelector('.line2');
 var recommend = document.querySelector('.recommend');
 var favoriteButton = document.querySelector('.favorite-button');
-var favorites = [];
+var recipeButton = document.querySelector('.recipe-button');
+var recipeBar = document.querySelector('.add-recipe-bar');
+var makeNew = document.querySelector('.add-new-button');
+var type = document.querySelector('.user-type');
+var dish = document.querySelector('.user-dish');
+
 
 // Event Listeners
 cookButton.addEventListener('click', getData);
 clearButton.addEventListener('click', clear);
+favoriteButton.addEventListener('click', addFavorite);
+recipeButton.addEventListener('click', userRecipe);
+makeNew.addEventListener('click', addRecipe);
 
 //Event Handlers
 function getRandomIndex(array) {
@@ -19,7 +29,6 @@ function getRandomIndex(array) {
 
 function getData() {
   var index;
-  var choice;
   if (document.getElementById("side").checked === true) {
     index = getRandomIndex(sideDishes);
     choice = sideDishes[index];
@@ -55,23 +64,12 @@ function clear() {
   favoriteButton.classList.add('hidden');
 };
 
-var recipeButton = document.querySelector('.recipe-button');
-recipeButton.addEventListener('click', userRecipe);
-var recipeBar = document.querySelector('.add-recipe-bar');
-var makeNew = document.querySelector('.add-new-button');
-var type = document.querySelector('.user-type');
-var dish = document.querySelector('.user-dish');
-makeNew.addEventListener('click', addRecipe);
-
 function userRecipe() {
   recipeButton.classList.add('hidden');
   recipeBar.classList.remove('hidden');
 };
 
-
-function addRecipe() {  //type of dish shows result, calls saving to array
-  // var userType = type;
-  // var userDish = dish;
+function addRecipe() {
   recipeButton.classList.remove('hidden');
   recipeBar.classList.add('hidden');
 
@@ -91,4 +89,8 @@ function saveMeal(type, choice) {   // save the dish into it's proper array
   } else if (type.toLowerCase === 'dessert') {
     desserts.push(choice);
   };
+};
+
+function addFavorite(choice) {
+  favorites.push(choice);
 };
