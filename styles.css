@@ -2,9 +2,6 @@
   font-family: Roboto;
 }
 
-html {
-}
-
 body{
   margin: 0 auto;
 }
@@ -64,13 +61,14 @@ body{
   text-align: center;
   margin-left: 03px;
   margin-top: 3vh;
-  margin-bottom: 1vh;
+  margin-bottom: 3%;
   padding: 0px;
 }
 
 .clear-button-block {
   margin-top: 8%;
   margin-left: 75%;
+  margin: 3%
 }
 
 .clear-button {
